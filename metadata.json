@@ -1,0 +1,8 @@
+{
+    "name": "Unix Timestamp Clock",
+    "description": "Show the current unix timestamp as a clock in the top bar",
+    "url": "https://github.com/se1exin/unix-timestamp-clock",
+    "uuid": "unix-timestamp-clock@se1exin.github.com",
+    "shell-version": ["3.22"],
+    "version": 1
+}
