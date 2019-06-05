@@ -3,13 +3,14 @@ const Main = imports.ui.main;
 const GnomeDesktop = imports.gi.GnomeDesktop;
 const Lang = imports.lang;
 const Shell = imports.gi.Shell;
-
-let text, button, label;
+const Clipboard = St.Clipboard.get_default();
+const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
+let text, button, label, btn;
 let clock, clock_signal_id;
 
 function init() {
     clock = new GnomeDesktop.WallClock();
-    button = new St.Bin({
+    button = new St.Button({
         style_class: 'panel-button',
         reactive: true,
         can_focus: false,
@@ -20,10 +21,13 @@ function init() {
     label = new St.Label({
         style_class: 'unixtime',
         text: '',
-        opacity: 200
+        opacity: 200,
+        x_expand: true
     });
-
     button.set_child(label);
+    button.connect("clicked", function(){
+        Clipboard.set_text(CLIPBOARD_TYPE,  label.get_text()+"000");
+    });
 }
 
 function enable() {
